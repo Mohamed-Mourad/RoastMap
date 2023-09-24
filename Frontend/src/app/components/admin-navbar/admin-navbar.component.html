@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="navbar-left">
+        
+    </div>
+    <div class="navbar-right" *ngIf="currentUserLogged">
+        <a (click)="logout()">Logout</a>
+    </div>
+    <div class="navbar-right" *ngIf="!currentUserLogged">
+        <a (click)="login()">Login</a>
+    </div>
+</nav>

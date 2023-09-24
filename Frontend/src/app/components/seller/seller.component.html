@@ -1,0 +1,53 @@
+<body>
+    <app-seller-navbar></app-seller-navbar>
+    <div class="seller-container">
+        <div class="tab">
+            <button class="tablinks seller-tab" [class.active]="currentTab === 0" (click)="currentTab = 0">Your Products</button>
+            <button class="tablinks seller-tab" [class.active]="currentTab === 1" (click)="currentTab = 1">Past Orders</button>
+        </div>
+
+        <div class="tab-content" *ngIf="currentTab === 0">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <input type="text" [(ngModel)]="name" id="name" name="name" placeholder="product name">
+                            <input type="text" [(ngModel)]="description" id="description" name="description"
+                                placeholder="product description">
+                            <input type="text" [(ngModel)]="price" id="price" name="price" placeholder="product price">
+                            <input type="text" [(ngModel)]="fileName" id="fileName" name="fileName"
+                                placeholder="product image source">
+                            <input type="text" [(ngModel)]="quantity" id="quantity" name="quantity"
+                                placeholder="product quantity">
+                            <button class="btn btn-primary" (click)='addProduct()'>Add Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngFor="let item of sellerProducts">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img [src]="item.fileName" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{item.name}}</h5>
+                                <p class="card-text"><small class="text-muted">Product ID: {{item.pId}}</small>
+                                </p>
+                                <p class="card-text"><small class="text-muted">Description: {{item.description}}</small>
+                                </p>
+                                <p class="card-text"><small class="text-muted">Price: ${{item.price}}</small></p>
+                                <p class="card-text"><small class="text-muted">Quantity: {{item.quantity}}</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" *ngIf="currentTab === 1">
+            
+        </div>
+    </div>
+</body>

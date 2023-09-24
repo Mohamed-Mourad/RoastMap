@@ -1,0 +1,75 @@
+<body>
+  <app-courier-navbar></app-courier-navbar>
+  <div class="courier-container">
+    <div class="tab">
+      <button class="tablinks" [class.active]="currentTab === 0" (click)="currentTab = 0">In queue</button>
+      <button class="tablinks" [class.active]="currentTab === 1" (click)="currentTab = 1">In progress</button>
+      <button class="tablinks" [class.active]="currentTab === 2" (click)="currentTab = 2">Delivered</button>
+    </div>
+
+    <div class="tab-content" *ngIf="currentTab === 0">
+      <div class="row" *ngFor="let order of inQueue">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Order number: {{order.orderId}}</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let product of order.products">
+                    <p class="card-text"><small class="text-muted">Product ID: {{product.productId}}</small></p>
+                    <p class="card-text"><small class="text-muted">Seller name: {{product.sellerName}}</small></p>
+                  </li>
+                </ul>
+                <p class="card-text"><small class="text-muted">Customer name: {{order.customerUsername}}</small></p>
+                <button class="btn btn-primary" (click)='processOrder(order.orderId, "inQueue")'>Process</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" *ngIf="currentTab === 1">
+      <div class="row" *ngFor="let order of inProgress">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Order number: {{order.orderId}}</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let product of order.products">
+                    <p class="card-text"><small class="text-muted">Product ID: {{product.productId}}</small></p>
+                    <p class="card-text"><small class="text-muted">Seller name: {{product.sellerName}}</small></p>
+                  </li>
+                </ul>
+                <p class="card-text"><small class="text-muted">Customer name: {{order.customerUsername}}</small></p>
+                <button class="btn btn-primary" (click)='processOrder(order.orderId, "inProgress")'>Process</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" *ngIf="currentTab === 2">
+      <div class="row" *ngFor="let order of Delivered">
+        <div class="card mb-3" style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Order number: {{order.orderId}}</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let product of order.products">
+                    <p class="card-text"><small class="text-muted">Product ID: {{product.productId}}</small></p>
+                    <p class="card-text"><small class="text-muted">Seller name: {{product.sellerName}}</small></p>
+                  </li>
+                </ul>
+                <p class="card-text"><small class="text-muted">Customer name: {{order.customerUsername}}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

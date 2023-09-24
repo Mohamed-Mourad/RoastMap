@@ -1,0 +1,58 @@
+<body [ngStyle]="{ 'background-image': 'url(' + bgUrl + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center center', 'height': '100vh' }">
+    <div class="sign-container">
+        <div class="form-group-container">
+            <div class="form-container">
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <label for="user-types">Select user type: </label>
+                        </td>
+                        <td>
+                            <select [(ngModel)]="selectedUserType" name="user-types" id="user-types">
+                                <option value="admin">Admin</option>
+                                <option value="customer">Customer</option>
+                                <option value="seller">Seller</option>
+                                <option value="courier">Courier</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <form name="signup" action="">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="email">Email: </label>
+                            </td>
+                            <td>
+                                <input type="text" [(ngModel)]="email" id="email" name="email" placeholder="email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="password">Password: </label>
+                            </td>
+                            <td>
+                                <input type="text" [(ngModel)]="password" id="password" name="password" placeholder="password">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <div>
+                    <table>
+                        <tr>
+                            <td class="td-submit" colspan="2">
+                                <input type="submit" class="submit" value="Sign In" (click)='signIn()'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="sign" colspan="2">
+                                <h3>Have an account? <a routerLink="/signup">Sign Up</a> instead</h3>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+  

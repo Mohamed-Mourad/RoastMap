@@ -1,0 +1,167 @@
+<body [ngStyle]="{ 'background-image': 'url(' + bgUrl + ')', 'background-repeat': 'no-repeat', 'background-size': 'cover', 'background-position': 'center center', 'height': '100vh' }">
+    <div class="sign-container">
+        <div class="form-group-container">
+            <div class="form-container">
+                <table>
+                    <tr>
+                        <td style="width: 50%;">
+                            <label for="user-types">Select user type: </label>
+                        </td>
+                        <td>
+                            <select [(ngModel)]="selectedUserType" name="user-types" id="user-types">
+                                <option value="admin">Admin</option>
+                                <option value="customer">Customer</option>
+                                <option value="seller">Seller</option>
+                                <option value="courier">Courier</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div [ngSwitch]="selectedUserType">
+                    <div *ngSwitchCase="'admin'">
+                        <form name="signup" action="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="username">Choose your username: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="username" id="username" name="username" placeholder="username">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="email">Choose your email: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="email" id="email" name="email" placeholder="email">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="password">Choose your password: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="password" id="password" name="password" placeholder="password">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div *ngSwitchCase="'customer'">
+                        <form name="signup" action="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="username">Choose your username: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="username" id="username" name="username" placeholder="username">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="email">Choose your email: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="email" id="email" name="email" placeholder="email">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="password">Choose your password: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="password" id="password" name="password" placeholder="password">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="address">Address: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="address" id="address" name="address" placeholder="address">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="zone">Select your zone: </label>
+                                    </td>
+                                    <td>
+                                        <select [(ngModel)]="customerZone" name="customer-zone" id="customer-zone">
+                                            <option value="Sheikh_Zayed">Al Sheikh Zayed</option>
+                                            <option value="Dokki">Dokki</option>
+                                            <option value="Fifth_Settlement">The Fifth Settlement</option>
+                                            <option value="Haram">Al Haram</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div *ngSwitchCase="'seller'">
+                        <form name="signup" action="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="username">Choose your username: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="username" id="username" name="username" placeholder="username">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div *ngSwitchCase="'courier'">
+                        <form name="signup" action="">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="username">Choose your username: </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" [(ngModel)]="username" id="username" name="username" placeholder="username">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="coverage">Covered zones: </label>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" class="checkbox" [(ngModel)]="isZayed" id="zone1" name="zone1" value="zayed">
+                                        <label for="zone1"> Sheikh Zayed  </label>
+
+                                        <input type="checkbox" class="checkbox" [(ngModel)]="isDokki" id="zone2" name="zone2" value="dokki">
+                                        <label for="zone2"> Dokki  </label>
+
+                                        <input type="checkbox" class="checkbox" [(ngModel)]="isTagamo" id="zone3" name="zone3" value="tagamo">
+                                        <label for="zone3"> Fifth Settlement  </label>
+
+                                        <input type="checkbox" class="checkbox" [(ngModel)]="isHaram" id="zone4" name="zone4" value="haram">
+                                        <label for="zone4"> Al Haram</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <td class="td-submit" colspan="2">
+                                <input type="submit" class="submit" value="Sign Up" (click)='signUp()'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="sign" colspan="2">
+                                <h3>Have an account? <a routerLink="/signin">Sign In</a> instead</h3>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+  

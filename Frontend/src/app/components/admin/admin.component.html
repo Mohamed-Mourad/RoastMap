@@ -1,0 +1,136 @@
+<body>
+    <app-admin-navbar></app-admin-navbar>
+    <div class="seller-container">
+        <div class="tab">
+            <button class="tablinks seller-tab" [class.active]="currentTab === 0"
+                (click)="currentTab = 0">Add Users</button>
+            <button class="tablinks seller-tab" [class.active]="currentTab === 1"
+                (click)="currentTab = 1">Current Users</button>
+        </div>
+
+        <div class="tab-content" *ngIf="currentTab === 0">
+            <div class="forms-container">
+                <form name="genSeller" action="">
+                    <table>
+                        <tr>
+                            <td><label>Seller username:</label></td>
+                            <td><input type="text" [(ngModel)]="sellerUsername" id="sellerUsername" name="sellerUsername" placeholder="seller username"></td>
+                        </tr>
+                    </table>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="td-submit" colspan="2">
+                                    <input type="submit" class="submit" value="Generate Seller" (click)='generateSeller()'/>
+                                </td>
+                                <!-- <button (click)="generateSeller(sellerUsername)">Generate Seller</button> -->
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+                <form name="genCourier" action="">
+                    <tr>
+                        <td><label>Courier username:</label></td>
+                        <td><input type="text" [(ngModel)]="courierUsername" id="courierUsername" name="courierUsername" placeholder="courier username"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Zones:</label></td>
+                        <td>
+                          <label><input type="checkbox" class="checkbox" [(ngModel)]="isZayed" id="zone1" name="zone1" value="zayed"/> Sheikh Zayed</label>
+                          <label><input type="checkbox" class="checkbox" [(ngModel)]="isDokki" id="zone2" name="zone2" value="dokki"/> Dokki</label>
+                          <label><input type="checkbox" class="checkbox" [(ngModel)]="isTagamo" id="zone3" name="zone3" value="tagamo"/> Fifth Settlement</label>
+                          <label><input type="checkbox" class="checkbox" [(ngModel)]="isHaram" id="zone4" name="zone4" value="haram"> Haram</label>
+                        </td>
+                      </tr>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="td-submit" colspan="2">
+                                    <input type="submit" class="submit" value="Generate Courier" (click)='generateCourier()'/>
+                                </td>
+                                <!-- <button (click)="generateCourier(courierUsername)">Generate Courier</button> -->
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="tab-content" *ngIf="currentTab === 1">
+            <div class="sub-tab">
+                <button class="tablinks sub-tablinks" [class.active]="currentSubTabTwo === 0"
+                    (click)="currentSubTabTwo = 0">Sellers</button>
+                <button class="tablinks sub-tablinks" [class.active]="currentSubTabTwo === 1"
+                    (click)="currentSubTabTwo = 1">Couriers</button>
+                <button class="tablinks sub-tablinks" [class.active]="currentSubTabTwo === 2"
+                    (click)="currentSubTabTwo = 2">Customers</button>
+            </div>
+            <div class="tab-content sub-tab-content" *ngIf="currentSubTabTwo === 0">
+                <div class="row">
+                    <div class="col-md-4 mb-3 user-card" *ngFor="let seller of sellers">
+                        <div class="card">
+                            <div class="card-header">
+                                Email: {{seller.email}}
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>username: {{seller.username}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>password: {{seller.password}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>Status: {{seller.loggedIn}}</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content sub-tab-content" *ngIf="currentSubTabTwo === 1">
+                <div class="row">
+                    <div class="col-md-4 mb-3 user-card" *ngFor="let courier of couriers">
+                        <div class="card">
+                            <div class="card-header">
+                                Name: {{courier.name}}
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Zones: {{courier.zones}}</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content sub-tab-content" *ngIf="currentSubTabTwo === 2">
+                <div class="row">
+                    <div class="col-md-4 mb-3 user-card" *ngFor="let customer of customers">
+                        <div class="card">
+                            <div class="card-header">
+                                Email: {{customer.email}}
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>username: {{customer.username}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>password: {{customer.password}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>address: {{customer.address}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>zone: {{customer.zone}}</p>
+                                </blockquote>
+                                <blockquote class="blockquote mb-0">
+                                    <p>Status: {{customer.logged}}</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
